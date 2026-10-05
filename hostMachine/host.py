@@ -22,7 +22,7 @@ try:
     termios.tcsetattr(devopen, termios.TCSANOW, settings)
 
 
-    entry = print("Enter in one letter or number").Upper() 
+    entry = print("Enter in one letter or number").upper() 
 
     if len(entry) != 1 or not entry.isanum():
         print("Please enter in one letter or number!")
