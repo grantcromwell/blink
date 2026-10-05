@@ -6,7 +6,7 @@ import termios
 from time import sleep
 import tty
  
-port = os.environ["hostDevi"]
+port = os.environ["bridgePi4"]
 baud = termios.B9600
 
 
@@ -22,13 +22,14 @@ try:
     termios.tcsetattr(devopen, termios.TCSANOW, settings)
 
 
-    entry = print("Enter in one letter or number").upper() 
+    entry = input("Enter in one letter or number").upper() 
 
-    if len(entry) != 1 or not entry.isanum():
+    if len(entry) != 1 or not entry.isalnum():
         print("Please enter in one letter or number!")
+        return 2
     else:
         os.write(devopen, entry.encode("ascii"))
-        print("Sending: {entry} to Pico!") 
+        print(f"Sending: {entry} to Pico!") 
 finally:
     os.close(devopen)
 
