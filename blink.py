@@ -5,34 +5,31 @@ from time import sleep
 
 led = Pin(25, Pin.OUT)  
 
+def blinkFaRep():
+        for go in range(7):
+                led.on()
+                sleep(0.1)
+                led.off()
+                sleep(0.1)
+                led.on()
+                sleep(0.1)
+                led.off()
+
+
 def blinkFast():
-        led.on()
-        sleep(0.1)
-        led.off()
-        sleep(0.1)
-        led.on()
-        sleep(0.1)
-        led.off()
-        sleep(0.1)
-        led.on()
-        sleep(0.1)
-        led.off()
-        sleep(0.1)
-        led.on()
-        sleep(0.1)
-        led.off()
-        sleep(0.1)
-        led.on()
+        blinkFaRep()
+        blinkFaRep()
 
 
 
 def blinkSlow():
-        sleep(0.7)
-        led.off()
-        sleep(0.7)
-        led.on()
-        sleep(0.7)
-        led.off()
+        for go in range(2):
+                sleep(0.7)
+                led.off()
+                sleep(0.7)
+                led.on()
+                sleep(0.7)
+                led.off()
 
 
 
