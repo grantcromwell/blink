@@ -12,12 +12,12 @@ while True:
         if chunk:
             buffer += chunk
     while b'\n' in buffer:
-        rawmsg, buffer = buffer.split(b'\n', 1)
-        msg = rawmsg.decode().strip()
+        currentmsg, buffer = buffer.split(b'\n', 1)
+        msg = currentmsg.decode().strip()
         print(repr(msg))
         
-        if msg == 'ON':
+        if msg == '1':
             led.value(1)
             
-        elif msg == 'OFF':
+        elif msg == '0':
             led.value(0)

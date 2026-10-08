@@ -2,3 +2,6 @@ My first attempt was with a ido sbc 2d06 but i couldn't find the stock firmware 
 
 
 Update: Im switching to two Arduino Nano Esp32s
+
+V2:
+When I first switched to two Arduino nano esp32s, I was able to get uart communication between the two working on pins D0 and D1. The first esp32 would send a command to the second to blink an LED, then it would send a command to turn off the LED. This part was worked well and the next step was displaying a 1 or a 0 when the first esp32 sends a command to turn the LED off for the second esp32. At first, I though my display was broken. It would print an I2C address and I thought the part was fault. To verify, I used a multimeter and tested to see if the pins on the esp32 for its 3.3V pin were emmiting voltage. To my suprise it was, so next I testied if the VCC pin in the display was emmiting voltage and it wasnt. For a while, I couldnt figure out what was the problem, but then I realized the display most likely needed 5V to power on insted of 3V. To solve this issue, I used a rasberry pi pico which emits 5V on its VBUS insted of 3.3V. The next problem I had was incorrectly wiring the pins on the pico. I was using the wrong
