@@ -1,13 +1,17 @@
 from machine import UART, Pin
 from time import sleep
 
-led = Pin(48, Pin.OUT)
-uartRecv = UART(1, baudrate=9600, tx=Pin(43), rx=Pin(44))
+
+led = Pin("LED", Pin.OUT)
+uartRecv = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1))
+
+
 
 buffer = b''
 
 while True:
     if uartRecv.any():
+        print("recver running")
         chunk = uartRecv.read()
         if chunk:
             buffer += chunk
@@ -17,7 +21,10 @@ while True:
         print(repr(msg))
         
         if msg == '1':
-            led.value(1)
+            led.on()
+            
             
         elif msg == '0':
-            led.value(0)
+            led.off()
+           
+
