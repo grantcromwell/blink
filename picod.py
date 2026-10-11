@@ -13,6 +13,7 @@ display = ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c, addr=0x3C)
 buffer = b''
 
 
+
 while True:
     if uartrecv.any():
         chunk = uartrecv.read()
