@@ -15,10 +15,8 @@ buffer = b''
 
 while True:
     if uartrecv.any():
-        print("Pico UART0 initialized: 115200 baud, TX=GP0, RX=GP1")
         chunk = uartrecv.read()
         if chunk:
-            print("UART bytes:", repr(chunk))
             buffer += chunk
     while b'\n' in buffer:
         currentmsg, buffer = buffer.split(b'\n', 1)
