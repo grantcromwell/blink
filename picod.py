@@ -18,7 +18,6 @@ while True:
     if uartrecv.any():
         chunk = uartrecv.read()
         if chunk:
-            print("UART bytes:", repr(chunk))
             buffer += chunk
     while b'\n' in buffer:
         currentmsg, buffer = buffer.split(b'\n', 1)
